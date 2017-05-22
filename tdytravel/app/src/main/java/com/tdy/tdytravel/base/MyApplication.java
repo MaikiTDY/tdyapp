@@ -8,7 +8,7 @@ import android.content.SharedPreferences;
  * @author Administrator
  *
  */
-public class MyAppliaction extends Application{
+public class MyApplication extends Application{
     private static Context context;
     private static SharedPreferences share;
     private static SharedPreferences.Editor editor;
