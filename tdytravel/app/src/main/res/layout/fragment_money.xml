@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+     <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="理财"
+        android:textSize="20sp"
+        android:background="@color/purple"
+        android:textColor="@color/white"
+        android:gravity="center"
+       />
+     <com.tdy.family.customeview.PagerSlidingTabStrip 
+         android:id="@+id/money_pagersliding"
+         android:layout_width="match_parent"
+         android:layout_height="50dp"
+         app:pstsIndicatorColor="#ffff7c49"
+         app:pstsIndicatorHeight="10dp"
+         app:pstsTextColor="#898787"
+         app:pstsDividerColor="@android:color/transparent"
+       	 app:pstsTextSize="16sp"
+       	 app:pstsTextSelectedColor="#c60a0a"
+       	 app:pstsTextSelectedSize="20sp"
+         />
+      <android.support.v4.view.ViewPager
+        android:id="@+id/money_fragmnt_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</LinearLayout>

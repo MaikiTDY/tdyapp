@@ -1,101 +1,164 @@
 package com.tdy.tdytravel;
 
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
+import java.util.LinkedList;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+
+
+import android.os.Bundle;
+import android.os.SystemClock;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
+
+import com.tdy.tdytravel.R;
+import com.tdy.tdytravel.base.BaseFragment;
+import com.tdy.tdytravel.fragment.WelcomeFragment;
+import com.tdy.tdytravel.uitls.ToastUtil;
+
+public class MainActivity extends FragmentActivity {
+
+    //定义返回键时间间隔常量
+    public static final int LAST_CLICK_GAP = 600;//最后点击时间的间隔
+    public static final int EXIT_TIME_GAP = 2000;//退出时间间隔
+    public long lastClickTime = 0;//最后点击时间
+    private long mExitTime = 0;//退出时间
+
+    private FragmentManager fragmentManager;//fragment管理者
+    //初始化fragmentTag的存放容器
+    private LinkedList<String> fragmentTagContainer = new LinkedList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        fragmentManager = getSupportFragmentManager();//获取fragment管理者
+        WelcomeFragment fragment = new WelcomeFragment();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+        //  MainFragment fragment = MainFragment.getMainFragment();
+        //获取fragment的Tag
+        String fragmentTag = fragment.getFragmentTag();
+        //将新创建的fragmentTag放到集合
+        fragmentTagContainer.add(fragmentTag);
+        //开启事务并提交
+        fragmentManager.beginTransaction().add(R.id.main_frame_container, fragment, fragmentTag).addToBackStack(fragmentTag).commit();
+
+    }
+
+    /**
+     * 返回键的处理
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        //如果按下返回键
+        if (KeyEvent.KEYCODE_BACK == keyCode) {
+            //如果返回不是当前的fragment，就默认返回
+            if(!backCurrentFragment()){
+                goBack();
             }
-        });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-    }
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
             return true;
         }
 
-        return super.onOptionsItemSelected(item);
+        return super.onKeyDown(keyCode, event);
     }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+    /**
+     * 返回当前的fragment
+     * @return
+     */
+    private boolean backCurrentFragment() {
+        BaseFragment currentFragment = getCurrnetFragment();
+        if(currentFragment!=null){
+            //onBack()默认返回false
+            return currentFragment.onBack();
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    /**
+     * 获取当前的fragment
+     * @return
+     */
+    private BaseFragment getCurrnetFragment() {
+        if (fragmentTagContainer.size()>0) {
+            //返回最后一个fragment
+            return (BaseFragment) fragmentManager.findFragmentByTag(fragmentTagContainer.peekLast());
+        }else {
+            return null;
+        }
+
+    }
+
+    /**
+     * 默认返回
+     */
+    private void goBack() {
+        //获取返回栈的fragment的数量
+        int fragmentCount = fragmentManager.getBackStackEntryCount();
+        //只存在一个fragment的时候 ，提醒在按一次退出
+        if(fragmentCount==1){
+            if(SystemClock.uptimeMillis()-mExitTime>EXIT_TIME_GAP){
+                ToastUtil.showToastInUIThread("再按一次退出哦！");
+                mExitTime = SystemClock.uptimeMillis();
+            }else {
+                //关闭Activity
+                MainActivity.this.finish();
+            }
+        }else {
+            //如果集合存在多个fragment
+            if (fragmentTagContainer.size()>0) {
+                //移除fragment
+                fragmentTagContainer.pollLast();
+            }
+            //移除fragment
+            fragmentManager.popBackStack();
+        }
+    }
+
+
+    /**
+     * 启动fragment
+     */
+    public void startFragment(BaseFragment fragment,Bundle bundle){
+        if (fragment == null) {
+            throw new IllegalArgumentException("fragment is null");
+        }
+        if ((lastClickTime+LAST_CLICK_GAP)<SystemClock.uptimeMillis()) {
+            //获取fragment的Tag
+            String fragmentTag = fragment.getFragmentTag();
+            //获取事务
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            //设置fragment的动画
+            transaction.setCustomAnimations(0, 0, 0, 0);
+            //添加fragment
+            transaction.add(R.id.main_frame_container,fragment,fragmentTag);
+            if (bundle!=null) {
+                //在设置fragment的数据绑定
+                fragment.setArguments(bundle);
+            }
+            //隐藏当前的Fragment或者finish
+            BaseFragment currentFragment = getCurrnetFragment();
+            if (currentFragment!=null) {
+                if (currentFragment.finish()) {
+                    fragmentTagContainer.pollLast();
+                    fragmentManager.popBackStack();
+                }else {
+                    //隐藏当前fragment
+                    transaction.hide(currentFragment);
+                }
+            }
+
+            //添加tag
+            fragmentTagContainer.add(fragmentTag);
+            //添加到返回栈
+            transaction.addToBackStack(fragmentTag);
+            //提交事务
+            transaction.commit();
+            //获取最后点击时间
+            lastClickTime = SystemClock.uptimeMillis();
+        }
+    }
+
+
+
+
 }

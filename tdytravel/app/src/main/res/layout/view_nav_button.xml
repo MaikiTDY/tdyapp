@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/rg"
+    android:layout_margin="2dp"
+    android:layout_height="60dp"
+    android:orientation="horizontal" >
+    <RadioButton 
+        android:id="@+id/rb_home"
+        android:layout_width="0dp"
+        android:text="首页"
+        android:layout_weight="1"
+        android:button="@null"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:checked="true"
+        android:textSize="15sp"
+        android:drawableTop="@drawable/home_btn_selector"
+        android:textColor="@drawable/font_color_blue_selector"
+        
+        />
+     <RadioButton 
+        android:id="@+id/rb_money"
+        android:layout_width="0dp"
+        android:text="理财"
+        android:layout_weight="1"
+        android:button="@null"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:drawableTop="@drawable/money_btn_selector"
+        android:textColor="@drawable/font_color_blue_selector"
+        
+        />
+      <RadioButton 
+        android:id="@+id/rb_news"
+        android:layout_width="0dp"
+        android:text="消息"
+        android:layout_weight="1"
+        android:button="@null"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:drawableTop="@drawable/new_btn_selector"
+        android:textColor="@drawable/font_color_blue_selector"
+        
+        />
+       <RadioButton 
+        android:id="@+id/rb_mine"
+        android:layout_width="0dp"
+        android:text="我的"
+        android:layout_weight="1"
+        android:button="@null"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:drawableTop="@drawable/me_btn_selector"
+        android:textColor="@drawable/font_color_blue_selector"
+        
+        />
+    
+
+</RadioGroup>
