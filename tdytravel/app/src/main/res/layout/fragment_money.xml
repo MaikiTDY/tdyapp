@@ -13,7 +13,7 @@
         android:textColor="@color/white"
         android:gravity="center"
        />
-     <com.tdy.family.customeview.PagerSlidingTabStrip 
+     <com.tdy.tdytravel.view.PagerSlidingTabStrip
          android:id="@+id/money_pagersliding"
          android:layout_width="match_parent"
          android:layout_height="50dp"

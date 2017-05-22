@@ -11,7 +11,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 
-import com.tdy.tdytravel.R;
 import com.tdy.tdytravel.base.BaseFragment;
 import com.tdy.tdytravel.fragment.WelcomeFragment;
 import com.tdy.tdytravel.uitls.ToastUtil;

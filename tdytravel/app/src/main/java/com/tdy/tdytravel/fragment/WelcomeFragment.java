@@ -30,6 +30,7 @@ public class WelcomeFragment extends BaseFragment {
 	}
 	/**
 	 * MainFragment
+     * 定时启动 进入欢迎页
 	 */
 	@Override
 	public void initFragmentState(){

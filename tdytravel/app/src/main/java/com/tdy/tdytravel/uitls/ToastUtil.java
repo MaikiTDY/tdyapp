@@ -5,7 +5,7 @@ package com.tdy.tdytravel.uitls;
 
 import android.widget.Toast;
 
-import com.tdy.tdytravel.base.MyAppliaction;
+import com.tdy.tdytravel.base.MyApplication;
 
 /**
  * Created by Administrator on 2015/11/3.
@@ -13,7 +13,7 @@ import com.tdy.tdytravel.base.MyAppliaction;
 public class ToastUtil {
 
     public static void showToastInUIThread(String content){
-        Toast.makeText(MyAppliaction.getContext(),content,Toast.LENGTH_SHORT).show();
+        Toast.makeText(MyApplication.getContext(),content,Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -23,7 +23,7 @@ public class ToastUtil {
         ThreadPoolUtil.runTaskInThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(MyAppliaction.getContext(),content,Toast.LENGTH_SHORT).show();
+                Toast.makeText(MyApplication.getContext(),content,Toast.LENGTH_SHORT).show();
             }
         });
     }

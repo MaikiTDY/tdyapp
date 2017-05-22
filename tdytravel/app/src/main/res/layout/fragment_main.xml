@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    <com.tdy.family.customeview.MyViewPager
+    <com.tdy.tdytravel.view.MyViewPager
         android:id="@+id/container_main_fragment_vp"
         android:layout_width="match_parent"
         android:layout_height="0dp"

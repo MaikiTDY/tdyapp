@@ -19,7 +19,7 @@ import com.tdy.tdytravel.view.PagerSlidingTabStrip;
  *
  */
 public class MoneyFragment extends BaseFragment implements OnPageChangeListener{
-	public static final String[] data={"�������","֧������","��ǩ����","�˻�����","�ֿ����","��Ʒ����"};
+	public static final String[] data={"A","B","C","D","E","F"};
 	private PagerSlidingTabStrip psts;
 	private ViewPager viewPager;
 	private List<BaseFragment> fragmentContainer = new ArrayList<BaseFragment>();
