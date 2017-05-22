@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="欢迎使用理财通"
+        android:text="欢迎使用贵州旅游攻略"
         android:textSize="25sp"
         android:textColor="@color/gray"
         android:textStyle="bold"
@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          android:scaleType="centerInside"
-         android:layout_margin="10dp"
+         android:layout_margin="30dp"
          android:src="@mipmap/logo_kaixin"
         />
 

@@ -10,8 +10,10 @@ import com.tdy.tdytravel.base.BaseFragment;
 
 
 /**
- * @author Administrator
- *
+ * Created by tangdayi on 2017/5/20.
+ * 作者:tangdayi
+ * 日期:2017年05月20日10时02分
+ * 工程:tdytravel * *
  */
 public class PayFragment extends BaseFragment implements OnItemClickListener{
     

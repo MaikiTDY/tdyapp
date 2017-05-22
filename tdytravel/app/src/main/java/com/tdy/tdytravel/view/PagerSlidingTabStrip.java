@@ -44,6 +44,12 @@ import java.util.Locale;
 
 import com.tdy.tdytravel.R;
 
+/**
+ * * Created by tangdayi on 2017/5/19.
+ * 作者:tangdayi
+ * 日期:2017年05月20日10时02分
+ * 工程:tdytravel *
+ */
 public class PagerSlidingTabStrip extends HorizontalScrollView {
 
     private int mSelectedPosition;

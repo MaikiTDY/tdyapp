@@ -12,8 +12,12 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by Administrator on 2015/11/3.
- */
+ * Created by tangdayi on 2017/5/20.
+ * 作者:tangdayi
+ * 日期:2017年05月20日10时02分
+ * 工程:tdytravel *
+ *
+ * */
 /*
     线程池代理
  */

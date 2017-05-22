@@ -21,8 +21,10 @@ import com.tdy.tdytravel.R;
 
 /**
  * 主的Fragment
- * @author Administrator
- *
+ * Created by tangdayi on 2017/5/20.
+ * 作者:tangdayi
+ * 日期:2017年05月20日10时02分
+ * 工程:tdytravel * *
  */
 public class MainFragment extends BaseFragment implements OnCheckedChangeListener{
     private static MainFragment mainFragment =null;
@@ -77,7 +79,7 @@ public class MainFragment extends BaseFragment implements OnCheckedChangeListene
         //初始化集合对象
         fragmentContainer = new ArrayList<BaseFragment>();
         fragmentContainer.add(HomeFragment.getFragment());
-        fragmentContainer.add(MoneyFragment.getFragment());
+        fragmentContainer.add(InfoFragment.getFragment());
         fragmentContainer.add(NewsFragment.getFragment());
         fragmentContainer.add(MineFragment.getFragment());
         //设置监听

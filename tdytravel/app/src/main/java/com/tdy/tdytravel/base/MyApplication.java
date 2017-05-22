@@ -5,8 +5,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 /**
  * 上下文和共享参数处理
- * @author Administrator
- *
+ * * Created by tangdayi on 2017/5/20.
+ * 作者:tangdayi
+ * 日期:2017年05月20日10时02分
+ * 工程:tdytravel * *
  */
 public class MyApplication extends Application{
     private static Context context;

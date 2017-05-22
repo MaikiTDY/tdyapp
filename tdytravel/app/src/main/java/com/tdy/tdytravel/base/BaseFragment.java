@@ -12,11 +12,13 @@ import android.view.ViewGroup;
 import com.tdy.tdytravel.MainActivity;
 import com.tdy.tdytravel.uitls.ThreadPoolUtil;
 
-/***
- * Fragmernt的基类
- * @author Administrator
- *
+/**
+ * Created by tangdayi on 2017/5/20.
+ * 作者:tangdayi
+ * 日期:2017年05月20日10时02分
+ * 工程:tdytravel *
  */
+
 public abstract class BaseFragment extends Fragment{
     private View view;
     private int fragmentId;

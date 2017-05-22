@@ -8,15 +8,18 @@ import com.tdy.tdytravel.R;
 import com.tdy.tdytravel.base.BaseFragment;
 
 /**
- * @author Administrator
- *
+ * Created by tangdayi on 2017/5/20.
+ * 作者:tangdayi
+ * 日期:2017年05月20日10时02分
+ * 工程:tdytravel *
+ * 行程
  */
-public class AccountFragment extends BaseFragment {
+public class TravelFragment extends BaseFragment {
     
-	private static AccountFragment fragment;
-    public static AccountFragment getFragment(){
+	private static TravelFragment fragment;
+    public static TravelFragment getFragment(){
     	if (fragment==null) {
-			fragment = new AccountFragment();
+			fragment = new TravelFragment();
 			return fragment;
 		}
     	return null;

@@ -11,16 +11,18 @@ import com.tdy.tdytravel.R;
 import com.tdy.tdytravel.base.BaseFragment;
 
 /**
- * @author Administrator
- *
+ * Created by tangdayi on 2017/5/20.
+ * 作者:tangdayi
+ * 日期:2017年05月20日10时02分
+ * 工程:tdytravel * *
  */
-public class IncomeFragment extends BaseFragment implements OnItemClickListener{
+public class DetailsFragment extends BaseFragment implements OnItemClickListener{
     private GridView gridView;
     
-    private static IncomeFragment fragment;
-    public static IncomeFragment getFragment(){
+    private static DetailsFragment fragment;
+    public static DetailsFragment getFragment(){
     	if (fragment==null) {
-			fragment = new IncomeFragment();
+			fragment = new DetailsFragment();
 			return fragment;
 		}
     	return null;

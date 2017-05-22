@@ -15,6 +15,13 @@ import com.tdy.tdytravel.base.BaseFragment;
 import com.tdy.tdytravel.fragment.WelcomeFragment;
 import com.tdy.tdytravel.uitls.ToastUtil;
 
+
+/**
+ * * Created by tangdayi on 2017/5/20.
+ * 作者:tangdayi
+ * 日期:2017年05月20日10时02分
+ * 工程:tdytravel *
+ */
 public class MainActivity extends FragmentActivity {
 
     //定义返回键时间间隔常量

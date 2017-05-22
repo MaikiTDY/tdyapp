@@ -15,10 +15,15 @@ import com.tdy.tdytravel.base.BaseFragment;
 import com.tdy.tdytravel.view.PagerSlidingTabStrip;
 
 /**
- * @author Administrator
+ * Created by tangdayi on 2017/5/20.
+ * 作者:tangdayi
+ * 日期:2017年05月20日10时02分
+ * 工程:tdytravel *
  *
+ * 消息
  */
-public class MoneyFragment extends BaseFragment implements OnPageChangeListener{
+
+public class InfoFragment extends BaseFragment implements OnPageChangeListener{
 	public static final String[] data={"A","B","C","D","E","F"};
 	private PagerSlidingTabStrip psts;
 	private ViewPager viewPager;
@@ -26,10 +31,10 @@ public class MoneyFragment extends BaseFragment implements OnPageChangeListener{
 	private MoneyFragmentPagerAdapter adapter;
 	
 
-	private static MoneyFragment fragment;
-	public static MoneyFragment getFragment(){
+	private static InfoFragment fragment;
+	public static InfoFragment getFragment(){
 		if (fragment==null) {
-			fragment = new MoneyFragment();
+			fragment = new InfoFragment();
 		    return fragment;
 		}
 		return fragment;
@@ -45,10 +50,10 @@ public class MoneyFragment extends BaseFragment implements OnPageChangeListener{
 	@Override
 	public void initFragmentState() {
 		super.initFragmentState();
-		fragmentContainer.add(IncomeFragment.getFragment());
+		fragmentContainer.add(DetailsFragment.getFragment());
 		fragmentContainer.add(PayFragment.getFragment());
 		fragmentContainer.add(NotePadFragment.getFragment());
-		fragmentContainer.add(AccountFragment.getFragment());
+		fragmentContainer.add(TravelFragment.getFragment());
 		fragmentContainer.add(WarehouseFragment.getFragment());
 		fragmentContainer.add(CommodityFragment.getFragment());
 		

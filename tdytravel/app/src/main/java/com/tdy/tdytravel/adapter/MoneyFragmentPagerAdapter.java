@@ -7,11 +7,18 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.tdy.tdytravel.base.BaseFragment;
-import com.tdy.tdytravel.fragment.MoneyFragment;
+import com.tdy.tdytravel.fragment.InfoFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * * Created by tangdayi on 2017/5/20.
+ * 作者:tangdayi
+ * 日期:2017年05月20日10时02分
+ * 工程:tdytravel *
+ *
+ */
 public class MoneyFragmentPagerAdapter extends FragmentStatePagerAdapter{
 
     private List<BaseFragment> fragmentContainer;
@@ -42,7 +49,7 @@ public class MoneyFragmentPagerAdapter extends FragmentStatePagerAdapter{
      */
     @Override
     public CharSequence getPageTitle(int position) {
-        return MoneyFragment.data[position];
+        return InfoFragment.data[position];
     }
 
 }
