@@ -1,8 +1,10 @@
 package com.tdy.tdytravel.fragment;
 
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.tdy.tdytravel.R;
 import com.tdy.tdytravel.base.BaseFragment;
@@ -14,6 +16,10 @@ import com.tdy.tdytravel.base.BaseFragment;
  * 工程:tdytravel * *
  */
 public class HomeFragment extends BaseFragment {
+
+    public ListView listView = null;
+    public ViewPager viewPager = null;
+
     
 	private static HomeFragment homeFragment;
 	public static HomeFragment getFragment(){

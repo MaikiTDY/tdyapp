@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-    <TextView 
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right">
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/home_tv_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="首页"
-        android:textSize="20sp"
         android:background="@color/blue"
-        android:textColor="@color/white"
         android:gravity="center"
-       />
-    
-    <ListView 
+        android:text="首页"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/home_viewpager_pic"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+    </android.support.v4.view.ViewPager>
+
+    <ListView
         android:id="@+id/home_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
-
 </LinearLayout>
