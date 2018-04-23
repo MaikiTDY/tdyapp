@@ -41,11 +41,11 @@ public class DownUtil {
 						onDownCompelet.downSucc(url, bitmap);
 					}
 				});
-			};
+			}
 		}.start();
 	}
 	
 	public interface OnDownCompelet{
 		void downSucc(String url, Object obj);
-	};
+	}
 }

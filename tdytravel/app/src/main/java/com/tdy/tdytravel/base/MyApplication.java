@@ -3,6 +3,9 @@ package com.tdy.tdytravel.base;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import com.tdy.tdytravel.bean.User;
+
 /**
  * 上下文和共享参数处理
  * * Created by tangdayi on 2017/5/20.
@@ -14,11 +17,29 @@ public class MyApplication extends Application{
     private static Context context;
     private static SharedPreferences share;
     private static SharedPreferences.Editor editor;
+    private static MyApplication myApplication;
+    private static User user;
     @Override
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
+        myApplication = this;
         initShare();
+    }
+
+    public static Application getInstance(){
+        return myApplication;
+    }
+
+    public static User getUser(){
+        if(user==null){
+            user = new User();
+        }
+        return user;
+    }
+
+    public static void setUser(User user){
+        MyApplication.user = user;
     }
     /**
      * 获取上下文
@@ -72,6 +93,11 @@ public class MyApplication extends Application{
      */
     public static int getInt(String key){
         return share.getInt(key,-1);
+    }
+
+
+    public static Object getObject(){
+        return null;
     }
 
 

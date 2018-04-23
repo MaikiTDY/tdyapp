@@ -3,12 +3,14 @@ package com.tdy.tdytravel.base;
 
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lidroid.xutils.ViewUtils;
 import com.tdy.tdytravel.MainActivity;
 import com.tdy.tdytravel.uitls.ThreadPoolUtil;
 
@@ -22,15 +24,20 @@ import com.tdy.tdytravel.uitls.ThreadPoolUtil;
 public abstract class BaseFragment extends Fragment{
     private View view;
     private int fragmentId;
+    public Context mContext = MyApplication.getContext();
     //每创建一个fragment，fragmentId加一
     public BaseFragment(){
         fragmentId++;
+        this.mContext = MyApplication.getContext();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = initView(inflater,container);
+        ViewUtils.inject(this, view);
+        //获取fragment传过来的数据
+        onGetBundle(getArguments());
         return view;
     }
     /**
@@ -110,4 +117,9 @@ public abstract class BaseFragment extends Fragment{
             ((MainActivity) getActivity()).startFragment(fragment,bundle);
         }
     }
+
+    protected  void startFragment(BaseFragment fragment){
+        startFragment(fragment,null);
+    }
+
 }

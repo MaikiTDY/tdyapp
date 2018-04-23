@@ -77,7 +77,7 @@ public class MainFragment extends BaseFragment implements OnCheckedChangeListene
         //预加载3个页面
         viewPager.setOffscreenPageLimit(3);
         //初始化集合对象
-        fragmentContainer = new ArrayList<BaseFragment>();
+        fragmentContainer = new ArrayList<>();
         fragmentContainer.add(HomeFragment.getFragment());
         fragmentContainer.add(InfoFragment.getFragment());
         fragmentContainer.add(NewsFragment.getFragment());

@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.tdy.tdytravel.R;
 import com.tdy.tdytravel.base.BaseFragment;
 
 /**
@@ -16,9 +17,20 @@ import com.tdy.tdytravel.base.BaseFragment;
  */
 public class LoginFragment extends BaseFragment {
 
-	@Override
+
+    private static LoginFragment fragment;
+    public static LoginFragment getFragment(){
+        if (fragment==null) {
+            fragment = new LoginFragment();
+            return fragment;
+        }
+        return fragment;
+    }
+
+    @Override
 	public View initView(LayoutInflater inflater, ViewGroup container) {
-		return null;
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
+		return view;
 	}
 
 	@Override

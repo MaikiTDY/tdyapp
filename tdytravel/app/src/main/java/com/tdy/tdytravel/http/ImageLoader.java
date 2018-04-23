@@ -1,10 +1,5 @@
 package com.tdy.tdytravel.http;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -12,8 +7,17 @@ import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.tdy.house.utils.ImageUtils;
 
+import com.tdy.tdytravel.uitls.ImageUtils;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+/***
+ * 图片加载器
+ */
 public class ImageLoader {
 	private String mUrl;
 	private ImageView mImageView;

@@ -24,10 +24,10 @@ import com.tdy.tdytravel.view.PagerSlidingTabStrip;
  */
 
 public class InfoFragment extends BaseFragment implements OnPageChangeListener{
-	public static final String[] data={"A","B","C","D","E","F"};
+	public static final String[] data={"阅新闻","赏景点","吃美食","住酒店"};
 	private PagerSlidingTabStrip psts;
 	private ViewPager viewPager;
-	private List<BaseFragment> fragmentContainer = new ArrayList<BaseFragment>();
+	private List<BaseFragment> fragmentContainer = new ArrayList<>();
 	private MoneyFragmentPagerAdapter adapter;
 	
 
@@ -41,7 +41,7 @@ public class InfoFragment extends BaseFragment implements OnPageChangeListener{
 	} 
 	@Override
 	public View initView(LayoutInflater inflater, ViewGroup container) {
-		View view = inflater.inflate(R.layout.fragment_money, container,false);
+		View view = inflater.inflate(R.layout.fragment_information, container,false);
 		init(view);
 		adapter = new MoneyFragmentPagerAdapter(getChildFragmentManager());
 		return view;
@@ -50,14 +50,12 @@ public class InfoFragment extends BaseFragment implements OnPageChangeListener{
 	@Override
 	public void initFragmentState() {
 		super.initFragmentState();
-		fragmentContainer.add(DetailsFragment.getFragment());
-		fragmentContainer.add(PayFragment.getFragment());
-		fragmentContainer.add(NotePadFragment.getFragment());
-		fragmentContainer.add(TravelFragment.getFragment());
-		fragmentContainer.add(WarehouseFragment.getFragment());
-		fragmentContainer.add(CommodityFragment.getFragment());
+		fragmentContainer.add(InformationNewsFragment.getFragment());
+		fragmentContainer.add(InformationScenicFragment.getFragment());
+		fragmentContainer.add(InformationFoodFragment.getFragment());
+		fragmentContainer.add(InformationHotelFragment.getFragment());
 		
-		viewPager.setOffscreenPageLimit(5);
+		viewPager.setOffscreenPageLimit(4);
 		viewPager.setAdapter(adapter);
 		adapter.setData(fragmentContainer);
 		psts.setViewPager(viewPager);

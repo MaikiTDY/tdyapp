@@ -11,15 +11,16 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 
-import com.tdy.house.R;
-import com.tdy.house.adapter.HomePageAdapter;
+import com.tdy.tdytravel.R;
+import com.tdy.tdytravel.adapter.HomePageAdapter;
+
 
 /***
  *
  * 图片轮播 滚动
  *
  */
-public class CustomDisplayView extends RelativeLayout {
+public class CustomDisplayView extends BaseView {
 	private View view;
 	private CustomViewPager disPager;
 	private RadioGroup vpRadioGroup;
@@ -31,17 +32,23 @@ public class CustomDisplayView extends RelativeLayout {
 
 	public CustomDisplayView(Context context) {
 		super(context);
-		InitView(context);
+		initView();
 	}
 
-	private void InitView(Context context) {
-		view = View.inflate(getContext(), R.layout.fm_viewpager, this);
-		disPager = (CustomViewPager) view.findViewById(R.id.display_viewpager);
-		vpRadioGroup = (RadioGroup) view.findViewById(R.id.vp_radiogroup);
-		InitListener();
-	}
+    @Override
+    public void initView() {
+        view = View.inflate(mContext, R.layout.fragment_home_viewpager, this);
+        disPager = (CustomViewPager) view.findViewById(R.id.home_display_viewpager);
+        vpRadioGroup = (RadioGroup) view.findViewById(R.id.home_vp_radiogroup);
+        initListener();
+    }
 
-	private void InitListener() {
+    @Override
+    public void initDate() {
+
+    }
+
+	public void initListener() {
 		disPager.setOnPageChangeListener(new OnPageChangeListener() {
 			@Override
 			public void onPageSelected(int position) {
@@ -74,7 +81,7 @@ public class CustomDisplayView extends RelativeLayout {
 		RadioButton radioButton;
 		for (int i = 0; i < CountPager; i++) {
 			radioButton = new RadioButton(getContext());
-			radioButton.setButtonDrawable(R.drawable.vp_radiogroup_selector);
+			radioButton.setButtonDrawable(R.drawable.home_vp_radiogroup_selector);
 			radioButton.setId(i);
 			radioButton.setPadding(5, 0, 5, 0);
 			vpRadioGroup.addView(radioButton);
@@ -88,10 +95,10 @@ public class CustomDisplayView extends RelativeLayout {
 					listener.getHeight(height);
 			}
 		});
-		SwitchViewPager();
+		switchViewPager();
 	}
 
-	private void SwitchViewPager() {
+	private void switchViewPager() {
 		final Handler handler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {

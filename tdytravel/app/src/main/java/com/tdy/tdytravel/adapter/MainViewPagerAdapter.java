@@ -15,7 +15,7 @@ import com.tdy.tdytravel.base.BaseFragment;
  * * Created by tangdayi on 2017/5/20.
  * 作者:tangdayi
  * 日期:2017年05月20日10时02分
- * 工程:tdytravel *
+ * 工程:tdytravel
  *
  */
 public class MainViewPagerAdapter extends FragmentStatePagerAdapter{

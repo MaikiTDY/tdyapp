@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+*******************************
+ * Created by  on .
+ * 作者:tangdayi
+ * 日期:年月日时分
+ * 文件:fragment_register
+ * 邮箱:tangdayi520@126.com
+ *******************************
+ -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:id="@+id/register_fragment_goback_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/back_black_arrow"
+                android:clickable="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                />
+            <TextView
+                android:id="@+id/register_fragment_goback_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="注册"
+                android:textSize="17sp"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:padding="10dip" >
+
+            <!-- 账号 -->
+
+            <TextView
+                android:id="@+id/register_user_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="5dp"
+                android:textColor="#7b68ee"
+                android:textSize="18sp"
+                android:layout_marginBottom="5dp"
+                android:text="用  户  名:" />
+
+            <EditText
+                android:id="@+id/register_username_et"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/register_user_text"
+                android:hint="亲输入手机号或邮箱注册,谢谢!"
+                android:inputType="text"
+                android:paddingLeft="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/autocomplete_shape"
+                android:singleLine="true" />
+
+            <!-- 密码 text -->
+
+            <TextView
+                android:id="@+id/register_password_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/register_username_et"
+                android:layout_marginTop="3dp"
+                android:textColor="#7b68ee"
+                android:textSize="18sp"
+                android:layout_marginBottom="5dp"
+                android:text="密        码:" />
+
+            <EditText
+                android:id="@+id/register_new_pwd_et"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/register_password_text"
+                android:hint="请输入密码"
+                android:paddingLeft="5dp"
+                android:inputType="textPassword"
+                android:background="@drawable/autocomplete_shape"
+                android:singleLine="true" />
+
+            <!-- 重复密码 text -->
+
+            <TextView
+                android:id="@+id/register_confirm_password_text"
+                android:layout_marginBottom="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/register_new_pwd_et"
+                android:layout_marginTop="10dp"
+                android:textColor="#7b68ee"
+                android:textSize="18sp"
+                android:text="确认密码:" />
+
+            <EditText
+                android:id="@+id/et_register_confirm_pwd"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@id/register_confirm_password_text"
+                android:hint="请输入确认密码"
+                android:inputType="textPassword"
+                android:paddingLeft="5dp"
+                android:background="@drawable/autocomplete_shape"
+                android:singleLine="true" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="30dp"
+
+            >
+            <Button
+                android:id="@+id/bt_register_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button_login_shape"
+                android:text="确定" />
+
+            <Button
+                android:id="@+id/bt_register_cancle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/button_login_shape"
+                android:text="取消" />
+
+        </LinearLayout>
+</LinearLayout>

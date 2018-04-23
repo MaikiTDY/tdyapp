@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="441dp">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/home_head_nav_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+        <com.tdy.tdytravel.view.NavImgLayout
+            android:id="@+id/home_head_nav_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"
+            app:checkedimg="@mipmap/gray_time_dot"
+            app:uncheckedimg="@mipmap/green_time_dot"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="10dp"
+            />
+        <ImageView
+            android:id="@+id/home_head_bottomleft_img"
+            android:layout_width="30dp"
+            android:layout_marginLeft="30dp"
+            android:src="@mipmap/common_btn_tab_arrow_left"
+            android:layout_gravity="left|center_vertical"
+            android:layout_height="40dp" />
+
+        <ImageView
+            android:id="@+id/home_head_bottomright_img"
+            android:layout_width="30dp"
+            android:layout_marginRight="50dp"
+            android:src="@mipmap/common_btn_tab_arrow_right"
+            android:layout_gravity="right|center_vertical"
+            android:layout_height="30dp" />
+    </FrameLayout>
+    <include layout="@layout/view_home_head_list_item"/>
+
+</LinearLayout>

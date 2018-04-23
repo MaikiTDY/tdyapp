@@ -21,6 +21,7 @@ import android.widget.Scroller;
 
 import com.jude.rollviewpager.adapter.LoopPagerAdapter;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
+import com.tdy.tdytravel.R;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;

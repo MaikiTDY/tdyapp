@@ -6,16 +6,17 @@ import android.content.SharedPreferences.Editor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.tdy.house.application.LHApplication;
-import com.tdy.house.data.User;
+import com.tdy.tdytravel.base.MyApplication;
+import com.tdy.tdytravel.bean.User;
+
 
 public class SystemUtil {
-	private static String path = "me.haloxin.haodou.spdata";
+	private static String path = "com.tdy.tdytrave";
 
 	public static void SaveUserInfo(Context context, User mUser) {
 		SharedPreferences sPreferences = context.getSharedPreferences(path,
 				Context.MODE_PRIVATE);
-		LHApplication.setUser(mUser);
+		MyApplication.setUser(mUser);
 		Editor editor = sPreferences.edit();
 		editor.putString("username", mUser.getUsername());
 		editor.commit();

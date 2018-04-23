@@ -7,44 +7,44 @@ import android.view.View;
 
 public class CustomViewPager extends ViewPager {
 
-	public CustomViewPager(Context context) {
-		super(context);
-	}
+    public CustomViewPager(Context context) {
+        super(context);
+    }
 
-	public CustomViewPager(Context context, AttributeSet attrs) {
-		super(context, attrs);
-	}
+    public CustomViewPager(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
 
-	@Override
-	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
-		int height = 0;
-		// �����������child�ĸ߶�
-		for (int i = 0; i < getChildCount(); i++) {
-			View child = getChildAt(i);
-			child.measure(widthMeasureSpec,
-					MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
-			int h = child.getMeasuredHeight();
-			if (h > height) { // ��������view�ĸ߶ȡ�
-				height = h;
-				if (listener != null)
-					listener.getViewHeight(height);
-			}
-		}
-		heightMeasureSpec = MeasureSpec.makeMeasureSpec(height,
-				MeasureSpec.EXACTLY);
+        int height = 0;
+        // 下面遍历所有child的高度
+        for (int i = 0; i < getChildCount(); i++) {
+            View child = getChildAt(i);
+            child.measure(widthMeasureSpec,
+                    MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+            int h = child.getMeasuredHeight();
+            if (h > height) { // 采用最大的view的高度。
+                height = h;
+                if (listener != null)
+                    listener.getViewHeight(height);
+            }
+        }
+        heightMeasureSpec = MeasureSpec.makeMeasureSpec(height,
+                MeasureSpec.EXACTLY);
 
-		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-	}
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
 
-	private IGetViewHeightListener listener;
+    private IGetViewHeightListener listener;
 
-	public interface IGetViewHeightListener {
-		void getViewHeight(int height);
-	}
+    public interface IGetViewHeightListener {
+        void getViewHeight(int height);
+    }
 
-	public void setIGetViewHeight(IGetViewHeightListener viewHeightListener) {
-		this.listener = viewHeightListener;
-	}
+    public void setIGetViewHeight(IGetViewHeightListener viewHeightListener) {
+        this.listener = viewHeightListener;
+    }
 
 }

@@ -14,9 +14,11 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -34,7 +36,7 @@ import java.util.zip.GZIPInputStream;
  * 网络工具类
  */
 public class HttpUtil {
-	private static final String TAG = "1000phone";
+	private static final String TAG = "travel";
 
 	/**
 	 * 判断网络是否可用
@@ -87,7 +89,7 @@ public class HttpUtil {
 	 * @return  获取请求字符串
 	 */
 	public static String sendGetByURLConn(String url) {
-		String result = null;
+		String result = "";
 		BufferedReader in = null;
 		try {
 			URL realUrl = new URL(url);
@@ -101,7 +103,7 @@ public class HttpUtil {
 			} else {
 				in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			}
-			String line;
+			String line="";
 			while ((line = in.readLine()) != null) {
 				result += line + "\n";
 			}
@@ -309,5 +311,104 @@ public class HttpUtil {
 
     public interface OnRequestListener<T> {
         void RequestResult(String url, T result);
+    }
+
+
+    /**
+     * 根据URL返回byte[]数组
+     * @param url
+     * @return
+     */
+    private static byte[] getByteInfoByUrl(String url){
+        try {
+            URL ul = new URL(url);
+            HttpURLConnection conn = (HttpURLConnection) ul.openConnection();
+            conn.setConnectTimeout(5000);
+            conn.setReadTimeout(5000);
+            conn.setRequestMethod("GET");
+
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            InputStream in = conn.getInputStream();
+            int len = 0;
+            byte[] buffer = new byte[1024 * 2];
+            while((len = in.read(buffer)) != -1){
+                out.write(buffer, 0, len);
+            }
+
+            return out.toByteArray();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 通过url下载String字符串
+     * @param url
+     * @return
+     */
+    public static String getJSONByUrl(String url){
+        byte[] buffer = getByteInfoByUrl(url);
+        if(buffer != null){
+            try {
+                return new String(buffer, "utf-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 通过url下载图片对象
+     * @param url
+     * @return
+     */
+    public static Bitmap getBitmapByUrl(String url){
+        Bitmap bitmap = null;
+        byte[] buffer = getByteInfoByUrl(url);
+        if(buffer != null){
+            bitmap = BitmapFactory.decodeByteArray(buffer, 0, buffer.length);
+        }
+        return bitmap;
+    }
+
+    /**
+     * 获取json数据
+     * @return
+     */
+    public static String getScenicJsonByTxt(){
+
+        File file = new File("");
+
+        return null;
+    }
+
+
+    /**
+     * 读取assets下的txt文件，返回utf-8 String
+     * @param context
+     * @param fileName 不包括后缀
+     * @return
+     */
+    public static String readAssetsTxt(Context context,String fileName){
+        try {
+            //Return an AssetManager instance for your application's package
+            InputStream is = context.getAssets().open(fileName);
+            int size = is.available();
+            // Read the entire asset into a local byte buffer.
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            // Convert the buffer into a string.
+            String text = new String(buffer, "utf-8");
+            // Finally stick the string into the text view.
+            return text;
+        } catch (IOException e) {
+            // Should never happen!
+//            throw new RuntimeException(e);
+            e.printStackTrace();
+        }
+        return "读取错误，请检查文件名";
     }
 }
