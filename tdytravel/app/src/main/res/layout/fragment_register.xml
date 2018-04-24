@@ -127,7 +127,7 @@
 
             >
             <Button
-                android:id="@+id/bt_register_submit"
+                android:id="@+id/register_submit_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -136,7 +136,7 @@
                 android:text="确定" />
 
             <Button
-                android:id="@+id/bt_register_cancle"
+                android:id="@+id/register_cancel_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

@@ -1,15 +1,18 @@
 package com.tdy.tdytravel.fragment;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
 import com.tdy.tdytravel.R;
 import com.tdy.tdytravel.base.BaseFragment;
+import com.tdy.tdytravel.base.MyApplication;
+import com.tdy.tdytravel.uitls.Constants;
 
 
 /**
@@ -25,20 +28,15 @@ public class MineFragment extends BaseFragment {
     private Button login;   // 登录按钮
     private NetworkImageView headImage;  // 登录之后的头像
 
+
     /**
      * 单列模式
      */
-    private volatile static MineFragment fragment;
-    private MineFragment(){
-        System.out.println("MineFragment has loaded");
-    }
+    private static MineFragment fragment;
     public static MineFragment getFragment(){
         if (fragment==null) {
-            synchronized (MineFragment.class){
-                if(fragment==null){
-                    fragment = new MineFragment();
-                }
-            }
+            fragment = new MineFragment();
+            return fragment;
         }
         return fragment;
     }
@@ -55,8 +53,15 @@ public class MineFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-
+        String name = MyApplication.getString(Constants.UserBeanAPI.username);
+        if(name!=null && name.length()>0){
+            username.setText(name);
+            headImage.setDefaultImageResId(MyApplication.getInt(Constants.UserBeanAPI.imageUrl));
+        }
     }
+
+    private FragmentManager fm;
+    private FragmentTransaction ft;
 
     /**
      * 监听初始化
@@ -66,6 +71,7 @@ public class MineFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 // 跳转登录页面
+                // MainFragment.getMainFragment().switchFragment(new LoginFragment());
                 startFragment(LoginFragment.getFragment());
             }
         });

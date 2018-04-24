@@ -35,6 +35,12 @@ public interface Constants {
         public final static String p_id = "p_id";
     }
 
+    interface UserBeanAPI{
+        public final static String username = "username";
+        public final static String password = "password";
+        public final static String imageUrl = "imageUrl";
+    }
+
 
     public final static String home_head_vp_image_url = "http://58.16.86.13:9001/Interface/api/getIndex";
 

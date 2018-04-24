@@ -1,7 +1,8 @@
 package com.tdy.tdytravel;
 
+import java.util.HashMap;
 import java.util.LinkedList;
-
+import java.util.Map;
 
 
 import android.os.Bundle;
@@ -33,6 +34,7 @@ public class MainActivity extends FragmentActivity {
     private FragmentManager fragmentManager;//fragment管理者
     //初始化fragmentTag的存放容器
     private LinkedList<String> fragmentTagContainer = new LinkedList<String>();
+    Map<String,Integer> mapFragment = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,8 +137,12 @@ public class MainActivity extends FragmentActivity {
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             //设置fragment的动画
             transaction.setCustomAnimations(0, 0, 0, 0);
-            //添加fragment
-            transaction.add(R.id.main_frame_container,fragment,fragmentTag);
+            // 2131493006 now 2131493033
+            int fragmentId = fragment.getId();
+            //if(!mapFragment.containsKey(fragmentTag)){
+                mapFragment.put(fragmentTag,fragmentId);
+                transaction.add(R.id.main_frame_container, fragment, fragmentTag);
+           // }
             if (bundle!=null) {
                 //在设置fragment的数据绑定
                 fragment.setArguments(bundle);

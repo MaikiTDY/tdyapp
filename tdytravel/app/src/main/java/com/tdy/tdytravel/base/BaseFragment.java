@@ -14,6 +14,10 @@ import com.lidroid.xutils.ViewUtils;
 import com.tdy.tdytravel.MainActivity;
 import com.tdy.tdytravel.uitls.ThreadPoolUtil;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by tangdayi on 2017/5/20.
  * 作者:tangdayi
@@ -25,9 +29,12 @@ public abstract class BaseFragment extends Fragment{
     private View view;
     private int fragmentId;
     public Context mContext = MyApplication.getContext();
+    public List<BaseFragment> pages;
+    public Map<String, BaseFragment> map = new HashMap<>();
     //每创建一个fragment，fragmentId加一
     public BaseFragment(){
         fragmentId++;
+        map.put(getFragmentTag(), this);
         this.mContext = MyApplication.getContext();
     }
 
@@ -119,7 +126,7 @@ public abstract class BaseFragment extends Fragment{
     }
 
     protected  void startFragment(BaseFragment fragment){
-        startFragment(fragment,null);
+        startFragment(fragment, null);
     }
 
 }

@@ -26,8 +26,16 @@ public class ToastUtil {
         ThreadPoolUtil.runTaskInThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(MyApplication.getContext(),content,Toast.LENGTH_SHORT).show();
+                Toast.makeText(MyApplication.getContext(), content, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    /***
+     * 信息提示
+     * @param content
+     */
+    public static void showToastInfo(String content){
+        Toast.makeText(MyApplication.getContext(), content, Toast.LENGTH_SHORT).show();
     }
 }

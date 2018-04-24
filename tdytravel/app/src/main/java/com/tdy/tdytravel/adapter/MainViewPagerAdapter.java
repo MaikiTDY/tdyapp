@@ -22,7 +22,7 @@ public class MainViewPagerAdapter extends FragmentStatePagerAdapter{
     private List<BaseFragment> fragmentContainer;
     public MainViewPagerAdapter(FragmentManager fm) {
         super(fm);
-        fragmentContainer = new ArrayList<BaseFragment>();
+        fragmentContainer = new ArrayList<>();
     }
     /**
      * 设置数据

@@ -82,6 +82,8 @@ public class MainFragment extends BaseFragment implements OnCheckedChangeListene
         fragmentContainer.add(InfoFragment.getFragment());
         fragmentContainer.add(NewsFragment.getFragment());
         fragmentContainer.add(MineFragment.getFragment());
+        // fragmentContainer.add(LoginFragment.getFragment());
+        // fragmentContainer.add(RegisterFragment.getFragment());
         //设置监听
         navRg.setOnCheckedChangeListener(this);
         //设置数据源
@@ -94,16 +96,24 @@ public class MainFragment extends BaseFragment implements OnCheckedChangeListene
     protected void initData() {
 
     }
+
     /**
      * 导航栏切换fragment
-     * @param fragment
+     * @param view
      */
-    public void switchFragment(BaseFragment fragment){
-        if (fragment != null) {
-//			fm = getActivity().getSupportFragmentManager();//获取fragment管理者
+    public void switchFragment(View view){
+
+			fm = getFragmentManager();//获取fragment管理者
             ft = fm.beginTransaction();
             //设置fragment切换动画
             ft.setCustomAnimations(anim.fade_in, anim.fade_out);
+
+            switch (view.getId()) {
+                case R.id.container_main_fragment_vp:
+                    ft.replace(R.id.activity_foot_view_progressBar,null);         //用 replace方法替换是可以的
+                    ft.commit();
+                    break;
+
             //	ft.replace(arg0, arg1, arg2)
             //fragment是否添加成功
 //			if (!fragment.isAdded()) {
@@ -137,6 +147,34 @@ public class MainFragment extends BaseFragment implements OnCheckedChangeListene
             default:
                 break;
         }
+    }
+
+
+//    public BaseFragment getItem(int position) {
+//        BaseFragment page = null;
+//        if (pages.size() > position) {
+//            page = pages.get(position);
+//            if (page != null) {
+//                return page;
+//            }
+//        }
+//
+//        while (position>=pages.size()) {
+//            pages.add(null);
+//        }
+//        pages.set(position, page);
+//        return page;
+//    }
+
+
+    public void switchFragment(BaseFragment fragment){
+        fm = getFragmentManager(); //获取fragment管理者
+        ft = fm.beginTransaction();
+        //设置fragment切换动画
+        ft.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+        ft.replace(R.id.main_frame_container,fragment);
+        ft.commit();
+
     }
 
 }
