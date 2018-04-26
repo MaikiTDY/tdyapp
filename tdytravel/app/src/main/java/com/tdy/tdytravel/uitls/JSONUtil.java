@@ -3,7 +3,9 @@ package com.tdy.tdytravel.uitls;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.tdy.tdytravel.bean.HomeBean;
+import com.tdy.tdytravel.bean.HotelBean;
 import com.tdy.tdytravel.bean.ImageBean;
+import com.tdy.tdytravel.bean.InformationBean;
 import com.tdy.tdytravel.bean.ScenicBean;
 
 import org.json.JSONArray;
@@ -144,6 +146,54 @@ public class JSONUtil {
             e.printStackTrace();
         }
         return scenicBeans;
+    }
+
+
+    /***
+     * 获取json
+     * 景点列表
+     * @param json
+     * @return
+     */
+    public static List<InformationBean> getInformationBeans(String json){
+        List<InformationBean> informationBeans = null;
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            String resultStr = jsonObject.getString("result");
+            if (resultStr!=null){
+                JSONObject resultJson = new JSONObject(resultStr);
+                JSONArray jsonArray = resultJson.getJSONArray("rows");
+                TypeToken<List<InformationBean>> typeToken = new TypeToken<List<InformationBean>>(){};
+                informationBeans = new Gson().fromJson(jsonArray.toString(), typeToken.getType());
+                // 开始逐层解析
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return informationBeans;
+    }
+
+    /***
+     * 酒店json
+     * @param json
+     * @return
+     */
+    public static List<HotelBean> getHotelBeans(String json){
+        List<HotelBean> hotelBeans = null;
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            String resultStr = jsonObject.getString("result");
+            if (resultStr!=null){
+                JSONObject resultJson = new JSONObject(resultStr);
+                JSONArray jsonArray = resultJson.getJSONArray("rows");
+                TypeToken<List<HotelBean>> typeToken = new TypeToken<List<HotelBean>>(){};
+                hotelBeans = new Gson().fromJson(jsonArray.toString(), typeToken.getType());
+                // 开始逐层解析
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return hotelBeans;
     }
 
 

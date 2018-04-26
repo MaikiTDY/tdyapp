@@ -19,18 +19,19 @@ import com.tdy.tdytravel.uitls.VolleyImageLoader;
  * 作者:tangdayi
  * 日期:2017年05月20日10时02分
  * 工程:tdytravel * *
+ * 酒店详情
  */
-public class DetailsScenicFragment extends BaseFragment{
+public class DetailsHotelFragment extends BaseFragment{
     private NetworkImageView imageView;
     private TextView title;
     private TextView datetime;
     private TextView content;
     private Context context;
     
-    private static DetailsScenicFragment fragment;
-    public static DetailsScenicFragment getFragment(){
+    private static DetailsHotelFragment fragment;
+    public static DetailsHotelFragment getFragment(){
     	if (fragment==null) {
-			fragment = new DetailsScenicFragment();
+			fragment = new DetailsHotelFragment();
 			return fragment;
 		}
     	return fragment;

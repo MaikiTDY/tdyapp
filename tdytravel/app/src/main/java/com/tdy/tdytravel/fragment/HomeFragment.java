@@ -18,6 +18,7 @@ import com.tdy.tdytravel.uitls.Constants;
 import com.tdy.tdytravel.uitls.HttpUtil;
 import com.tdy.tdytravel.uitls.JSONUtil;
 import com.tdy.tdytravel.uitls.ThreadPoolUtil;
+import com.tdy.tdytravel.uitls.ToastUtil;
 import com.tdy.tdytravel.view.HomeImageView;
 
 import java.util.List;
@@ -81,7 +82,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getContext(), position + "", Toast.LENGTH_SHORT).show();
+        ToastUtil.showToastInfo("我将于跳转，你准备好了吗？");
         if(scenicBeans!=null && scenicBeans.size()>0){
             ScenicBean scenicBean = scenicBeans.get(position-1);
             if (scenicBean!=null){

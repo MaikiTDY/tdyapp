@@ -31,6 +31,7 @@ public class MainActivity extends FragmentActivity {
     public long lastClickTime = 0;//最后点击时间
     private long mExitTime = 0;//退出时间
 
+    public int fragmentCount;
     private FragmentManager fragmentManager;//fragment管理者
     //初始化fragmentTag的存放容器
     private LinkedList<String> fragmentTagContainer = new LinkedList<String>();
@@ -48,6 +49,7 @@ public class MainActivity extends FragmentActivity {
         String fragmentTag = fragment.getFragmentTag();
         //将新创建的fragmentTag放到集合
         fragmentTagContainer.add(fragmentTag);
+        mapFragment.put(fragmentTag,fragment.getId());
         //开启事务并提交
         fragmentManager.beginTransaction().add(R.id.main_frame_container, fragment, fragmentTag).addToBackStack(fragmentTag).commit();
 
@@ -138,11 +140,63 @@ public class MainActivity extends FragmentActivity {
             //设置fragment的动画
             transaction.setCustomAnimations(0, 0, 0, 0);
             // 2131493006 now 2131493033
+            //if(!mapFragment.containsKey(fragmentTag)){
+            transaction.add(R.id.main_frame_container, fragment, fragmentTag);
+           // }
+            if (bundle!=null) {
+                //在设置fragment的数据绑定
+                fragment.setArguments(bundle);
+            }
+            //隐藏当前的Fragment或者finish
+            BaseFragment currentFragment = getCurrnetFragment();
+            if (currentFragment!=null) {
+                if (currentFragment.finish()) {
+                    fragmentTagContainer.pollLast();
+                    fragmentManager.popBackStack();
+                }else {
+                    //隐藏当前fragment
+                    transaction.hide(currentFragment);
+                }
+            }
+
+            //添加tag
+            fragmentTagContainer.add(fragmentTag);
+            //添加到返回栈
+            transaction.addToBackStack(fragmentTag);
+            //提交事务
+            transaction.commit();
+            //获取最后点击时间
+            lastClickTime = SystemClock.uptimeMillis();
+        }
+    }
+
+    public void goToMainFragment(){
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        fragmentManager.popBackStack();
+        fragmentTagContainer.pollLast();
+        ft.commit();
+    }
+
+    /**
+     * 启动fragment  之间跳转
+     */
+    public void swichFragment(BaseFragment fragment,Bundle bundle){
+        if (fragment == null) {
+            throw new IllegalArgumentException("fragment is null");
+        }
+        if ((lastClickTime+LAST_CLICK_GAP)<SystemClock.uptimeMillis()) {
+            //获取fragment的Tag
+            String fragmentTag = fragment.getFragmentTag();
+            //获取事务
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            //设置fragment的动画
+            transaction.setCustomAnimations(0, 0, 0, 0);
+            // 2131493006 now 2131493033
             int fragmentId = fragment.getId();
             //if(!mapFragment.containsKey(fragmentTag)){
-                mapFragment.put(fragmentTag,fragmentId);
-                transaction.add(R.id.main_frame_container, fragment, fragmentTag);
-           // }
+            mapFragment.put(fragmentTag,fragmentId);
+            fragmentTagContainer.get(0);
+            transaction.replace(R.id.main_frame_container, fragment, fragmentTag);
             if (bundle!=null) {
                 //在设置fragment的数据绑定
                 fragment.setArguments(bundle);

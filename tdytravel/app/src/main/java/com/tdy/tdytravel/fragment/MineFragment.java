@@ -24,7 +24,7 @@ import com.tdy.tdytravel.uitls.Constants;
  */
 public class MineFragment extends BaseFragment {
 
-    private TextView username;   // 用户名
+    private TextView usernameTv;   // 用户名
     private Button login;   // 登录按钮
     private NetworkImageView headImage;  // 登录之后的头像
 
@@ -44,7 +44,7 @@ public class MineFragment extends BaseFragment {
     @Override
     public View initView(LayoutInflater inflater, ViewGroup container) {
         View view = inflater.inflate(R.layout.fragment_mine, container, false);
-        username = (TextView) view.findViewById(R.id.mine_login_name);
+        usernameTv = (TextView) view.findViewById(R.id.mine_login_name);
         login = (Button) view.findViewById(R.id.mine_login_btn);
         headImage = (NetworkImageView) view.findViewById(R.id.mine_login_img);
         initListener();
@@ -55,7 +55,7 @@ public class MineFragment extends BaseFragment {
     protected void initData() {
         String name = MyApplication.getString(Constants.UserBeanAPI.username);
         if(name!=null && name.length()>0){
-            username.setText(name);
+            usernameTv.setText(name);
             headImage.setDefaultImageResId(MyApplication.getInt(Constants.UserBeanAPI.imageUrl));
         }
     }

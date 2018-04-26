@@ -81,13 +81,14 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
                     }
                     if(UserDao.addUser(MyApplication.getContext(), username, password)){
                         ToastUtil.showToastInfo("恭喜你，注册成功！");
+                        ToastUtil.showToastInfo("非常抱歉，现在跳转功能开发中，请耐心等待！");
                         //startFragment(LoginFragment.getFragment());
-                        MainFragment.getMainFragment().switchFragment(new LoginFragment());
+                        //MainFragment.getMainFragment().switchFragment(new LoginFragment());
                     }
                 }
                 break;
             case R.id.register_cancel_btn:
-                startFragment(LoginFragment.getFragment());
+                //startFragment(LoginFragment.getFragment());
                 break;
             default:
                 break;

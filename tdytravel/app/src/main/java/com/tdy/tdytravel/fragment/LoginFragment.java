@@ -58,7 +58,8 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener{
 
 	@Override
 	protected void initData() {
-		
+		fm = getActivity().getSupportFragmentManager();
+        ft = fm.beginTransaction();
 	}
 
 
@@ -80,10 +81,13 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener{
                 if(checkLogin(username,password)){
                     MyApplication.putString(Constants.UserBeanAPI.username, username);
                     MyApplication.putInt(Constants.UserBeanAPI.imageUrl, R.mipmap.prety1);
-                    ToastUtil.showToastInfo("登录成功！");
+                    ToastUtil.showToastInfo("登录成功！非常抱歉，登录跳转还没实现，?!?");
+
+                    //startFragment(MainFragment.getMainFragment());
+                    //switchFragment(MainFragment.getMainFragment());
                     //FragmentManager f = g.getFragmentManager();
                     // startFragment(MineFragment.getFragment());
-                    MainFragment.getMainFragment().switchFragment(new MineFragment());
+                    //MainFragment.getMainFragment().switchFragment(new MineFragment());
                 }
                 break;
             case R.id.login_fragment_goback_img:
@@ -100,28 +104,17 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener{
 
     /**
      * 导航栏切换fragment
-     * @param view
+     * @param fragment
      */
-    public void switchFragment(View view){
-        fm = getFragmentManager();//获取fragment管理者
-        ft = fm.beginTransaction();
+    public void switchFragment(BaseFragment fragment){
+        String fragmentTag = fragment.getFragmentTag();
+        if(fragmentTag!=null){
+            fm.popBackStack();
+        }
         //设置fragment切换动画
         ft.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-        switch (view.getId()) {
-            case R.id.container_main_fragment_vp:
-                ft.replace(R.id.activity_foot_view_progressBar,null);         //用 replace方法替换是可以的
-                ft.commit();
-                break;
-
-            //	ft.replace(arg0, arg1, arg2)
-            //fragment是否添加成功
-//			if (!fragment.isAdded()) {
-//				ft.hide(currentFragment).add(R.id.main_frame_container, fragment);
-//			}else {
-//				ft.hide(currentFragment).show(fragment);
-//			}
-//			currentFragment = fragment;
-        }
+        ft.add(R.id.main_frame_container,fragment, fragment.getFragmentTag());         //用 replace方法替换是可以的
+        ft.commit();
     }
 
     /***

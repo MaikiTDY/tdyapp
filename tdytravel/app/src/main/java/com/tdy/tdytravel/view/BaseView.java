@@ -16,9 +16,6 @@ public abstract class BaseView extends RelativeLayout{
     public BaseView(Context context) {
         super(context);
         this.mContext = context;
-        initView();
-        initDate();
-        initListener();
     }
 
     /**
