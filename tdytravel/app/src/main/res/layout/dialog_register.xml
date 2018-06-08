@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+*******************************
+ * Created by  on .
+ * 作者:tangdayi
+ * 日期:年月日时分
+ * 文件:dialog_login
+ * 邮箱:tangdayi520@126.com
+ *******************************
+ -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="#0fab14"
+        android:contentDescription="@string/app_name"
+        android:scaleType="center"
+        android:src="@mipmap/msg_icon" />
+
+    <EditText
+        android:id="@+id/dialog_register_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="16dp"
+        android:hint="请输入用户名"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/dialog_register_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif"
+        android:hint="请输入密码"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/dialog_register_repassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif"
+        android:hint="请输在次入密码"
+        android:inputType="textPassword" />
+
+</LinearLayout>

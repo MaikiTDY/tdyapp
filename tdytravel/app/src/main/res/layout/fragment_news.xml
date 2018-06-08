@@ -6,7 +6,7 @@
      <TextView 
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="消息"
+        android:text="行程"
         android:textSize="20sp"
         android:background="@color/brown"
         android:textColor="@color/white"

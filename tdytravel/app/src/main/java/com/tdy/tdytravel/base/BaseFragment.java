@@ -5,6 +5,7 @@ package com.tdy.tdytravel.base;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +26,7 @@ import java.util.Map;
  * 工程:tdytravel *
  */
 
-public abstract class BaseFragment extends Fragment{
+public abstract class BaseFragment extends DialogFragment{
     private View view;
     private int fragmentId;
     public Context mContext = MyApplication.getContext();

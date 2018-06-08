@@ -35,7 +35,7 @@
       <RadioButton 
         android:id="@+id/rb_news"
         android:layout_width="0dp"
-        android:text="信息"
+        android:text="行程"
         android:layout_weight="1"
         android:button="@null"
         android:layout_height="match_parent"
